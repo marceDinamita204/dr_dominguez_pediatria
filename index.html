@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes de Hidratacion</title>
+   <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+	html, body{
+    min-height: 80%;
+}
+
+header{
+    color: blueviolet;
+    text-decoration: underline;
+    text-align: center;
+    size-adjust: 80%;
+}
+
+main {
+       color: brown;
+       background-color: beige;
+       
+}
+
+footer {
+    color: coral;
+}
+
+ul {
+    border: solid red 5px;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+.btn{
+    border-color: blue;
+    background-color: black;
+    color: aliceblue;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 18px;
+    padding: 20px;
+    text-transform: capitalize;
+    &:hover {
+        background-color: blueviolet;
+        transition: all 500ms;
+    }
+
+      
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+<h2>Hidratación en Pediatría</h2>
+<button onclick="ingresePeso()"  class="btn" >calculo</button>
+
+    </header>
+
+    <main>
+    <h1>Planes de Hidratación en Pediatría.</h1>
+<p>La Hidratación en Pediatría, se calcula dependiendo del peso del pacientito, sumamente importante para no sobrehidratar a los pacientes.
+</p>
+   <h2> Según el peso del paciente:</h2>
+<ul>
+   <li>menores de 10 kg</li>
+   <li>mayores de 10 kg y menores de 20 kg</li>
+   <li>mayores de 20 kg y menores de 30 kg</li>
+   <li>mayores de 30 kg</li>
+</ul>
+   <h2> Preparación del Plan de Hidratación:</h2>
+<ul>
+   <li> Dextrosa 5% 500 ml</li>
+   <li>CLNA20% 20 ml</li>
+   <li>CLK 3M 6 ML</li>
+</ul>
+
+<h3>La infusion se realizara en ml/hora dependiendo el cálculo segun el peso y su respectiva fórmula.
+</h3>
+</main>
+<footer>
+<p>realizado por Dr. Dominguez</p>
+</footer>
+<script>
+    function ingresePeso() {
+        let peso = prompt('ingrese por favor el peso de el paciente')
+    
+        const supCorp = (((peso * 4) + 7)/ (+peso + 90));
+        
+
+        let hidratacionMayor30kg = (supCorp * 1500)/24;
+        let hidratacionMenor10kg = (+peso * 100)/24;
+        let hidratacionMayor10KilosMenor20 = (1000 + ((+peso - 10) * 50)) / 24;
+        let hidratacionMayor20KilosMenor30 = (1500 + ((+peso - 20) * 20 ) )/24;
+
+
+        console.log(' la superficie corporal del paciente es ' + supCorp.toFixed(2)+ ' m2');
+
+
+if (peso < 10 ){
+     console.log ('Si el paciente tiene menos de 10 kg, php dx5% 500 ml + CLna20% 20 ml + clk3m 6 ml ' + hidratacionMenor10kg.toFixed(0) + ' ml/h');
+     alert ('Si el paciente tiene menos de 10 kg la infusión es a ' + hidratacionMenor10kg.toFixed(0) + ' ml/h')
+    }
+else if (peso < 20 ){
+    console.log( 'Si el paciente tiene  de entre 10 kg y 20 kg, php dx5% 500, ml + CLna20% 20 ml + clk3m 6 ml '+ hidratacionMayor10KilosMenor20.toFixed(0) + ' ml/h');
+    alert ('Si el paciente tiene entre 10 kg y 20 kg la infusión es a '+ hidratacionMayor10KilosMenor20.toFixed(0) + ' ml/h')
+}   
+else if (peso < 30 ){
+    console.log('Si el paciente tiene entre 20 kg y 30 kg, hp dx5% 500 ml + CLna20% 20 ml + clk3m 6 ml ' + hidratacionMayor20KilosMenor30.toFixed(0) +  'ml/h');
+    alert ('Si el paciente tiene entre 20 kg y 30 kg la infusión es a ' + hidratacionMayor20KilosMenor30.toFixed(0) +  'ml/h')
+}
+
+else if (peso > 30){
+    console.log('Si el paciente tiene mas de 30 kg, php dx5% 500 ml + CLna20% 20 ml + clk3m 6 ml ' + hidratacionMayor30kg.toFixed(0) + ' ml/h');
+    alert ('Si el paciente tiene mas de 30 kg la insfusión es a ' + hidratacionMayor30kg.toFixed(0) + ' ml/h')
+}
+else{
+    console.log('no corresponde');
+    alert('no corresponde')
+}
+    }
+</script>
+</body>
+</html>
